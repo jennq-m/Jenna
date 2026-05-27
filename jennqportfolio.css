@@ -954,6 +954,216 @@ body { padding-top: 56px; }
 .proj-card--text:hover .proj-img img { filter: none; transform: none; }
 .proj-card--text:hover { border-color: var(--plum2); }
 
+/* ====== GALLERY CAROUSEL ====== */
+
+.gal-section {
+  margin-bottom: 3rem;
+}
+
+.gal-section:last-child { margin-bottom: 0; }
+
+.gal-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.gal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink2);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.gal-title::after {
+  content: '';
+  width: 60px;
+  height: 1px;
+  background: var(--border);
+}
+
+.gal-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.gal-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--parchment);
+  color: var(--ink2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 300ms ease,
+              border-color 300ms ease,
+              color 300ms ease,
+              transform 300ms ease;
+}
+
+.gal-btn:hover {
+  background: var(--lav);
+  border-color: var(--border2);
+  color: var(--plum2);
+  transform: scale(1.05);
+}
+
+/* Scrollable track */
+.gal-track {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 4px;
+}
+
+.gal-track::-webkit-scrollbar { display: none; }
+
+/* Each item */
+.gal-item {
+  position: relative;
+  flex-shrink: 0;
+  width: 280px;
+  aspect-ratio: 4/3;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.gal-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sh2);
+}
+
+.gal-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 400ms ease;
+}
+
+.gal-item:hover img { transform: scale(1.04); }
+
+/* Label overlay */
+.gal-item-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1rem 0.85rem;
+  background: linear-gradient(to top, rgba(51,45,85,0.75) 0%, transparent 100%);
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.92);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.gal-item:hover .gal-item-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .gal-item { width: 220px; }
+  .gal-section-head { flex-wrap: wrap; gap: 0.75rem; }
+}
+
+/* ====== LIGHTBOX ====== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(20, 15, 35, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lightbox.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  transform: scale(0.92);
+  transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lightbox.open .lightbox-content {
+  transform: scale(1);
+}
+
+.lightbox-content img,
+.lightbox-content video {
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 12px;
+  object-fit: contain;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+  display: block;
+}
+
+.lightbox-label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  font-style: italic;
+  text-align: center;
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 300ms ease, transform 300ms ease;
+  z-index: 10000;
+}
+
+.lightbox-close:hover {
+  background: rgba(255,255,255,0.2);
+  transform: rotate(90deg);
+}
+
+/* Cursor hint on gallery items */
+.gal-item { cursor: zoom-in; }
+
 /* ====== CONTACT ====== */
 .contact-bg {
   background: var(--plum3);

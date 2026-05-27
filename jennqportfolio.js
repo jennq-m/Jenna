@@ -123,4 +123,57 @@ if (window.matchMedia('(hover: none)').matches) {
   });
 }
 
+// ── Lightbox ──
+const lightbox     = document.getElementById('lightbox');
+const lightboxImg  = document.getElementById('lightboxImg');
+const lightboxVid  = document.getElementById('lightboxVid');
+const lightboxLbl  = document.getElementById('lightboxLabel');
+const lightboxClose = document.getElementById('lightboxClose');
+
+function openLightbox(src, label, isVideo) {
+  if (isVideo) {
+    lightboxVid.src = src;
+    lightboxVid.style.display = 'block';
+    lightboxImg.style.display = 'none';
+  } else {
+    lightboxImg.src = src;
+    lightboxImg.style.display = 'block';
+    lightboxVid.style.display = 'none';
+    lightboxVid.src = '';
+  }
+  lightboxLbl.textContent = label || '';
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+  lightboxVid.src = '';
+}
+
+// Attach click to all gallery items
+document.querySelectorAll('.gal-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const video = item.querySelector('video');
+    const img   = item.querySelector('img');
+    const label = item.querySelector('.gal-item-label')?.textContent || '';
+
+    if (video) {
+      openLightbox(video.src, label, true);
+    } else if (img) {
+      openLightbox(img.src, label, false);
+    }
+  });
+});
+
+// Close on button, backdrop click, or Escape key
+lightboxClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e => {
+  if (e.target === lightbox) closeLightbox();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
 });

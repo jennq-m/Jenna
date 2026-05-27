@@ -553,40 +553,81 @@
     <span class="sec-num">04</span>
     <h2 class="sec-title">Visual Gallery</h2>
   </div>
+
+  <!-- Graphic Work Carousel -->
   <div class="gal-section">
-    <div class="gal-title">Photography</div>
-    <div class="gal-grid gal-grid-photo">
-      <div class="gi gi-lg" style="grid-row:span 2;aspect-ratio:2/3">
-        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=700&q=80" alt="Photo">
-        <div class="gi-ov"><span class="gi-ov-t">Street, Binondo 2024</span></div>
+    <div class="gal-section-head">
+      <div class="gal-title">Graphic Work</div>
+      <div class="gal-controls">
+        <button class="gal-btn" onclick="galScroll('graphic', -1)" aria-label="Previous">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="gal-btn" onclick="galScroll('graphic', 1)" aria-label="Next">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
       </div>
-      <div class="gi gi-sm">
-        <img src="https://images.unsplash.com/photo-1490750967868-88df5691cc9b?w=500&q=80" alt="Photo">
-        <div class="gi-ov"><span class="gi-ov-t">Golden Hour</span></div>
+    </div>
+    <div class="gal-track" id="graphic">
+      <div class="gal-item">
+        <img src="assets/graphic1.png" alt="Wedding Monogram">
+        <div class="gal-item-label">Wedding Monogram</div>
       </div>
-      <div class="gi gi-sm">
-        <img src="https://images.unsplash.com/photo-1444464666168-49d633b86797?w=500&q=80" alt="Photo">
-        <div class="gi-ov"><span class="gi-ov-t">Birds in Flight</span></div>
+      <div class="gal-item">
+        <img src="assets/graphic2.png" alt="Wedding Invitation">
+        <div class="gal-item-label">Wedding Invitation</div>
       </div>
-      <div class="gi gi-sm">
-        <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=500&q=80" alt="Photo">
-        <div class="gi-ov"><span class="gi-ov-t">City Lights</span></div>
+      <div class="gal-item">
+        <img src="https://images.unsplash.com/photo-1634986666676-ec8fd927c23d?w=500&q=80" alt="Illustration">
+        <div class="gal-item-label">Illustration</div>
       </div>
-      <div class="gi gi-sm">
-        <img src="https://images.unsplash.com/photo-1473177104440-ffee2f376098?w=500&q=80" alt="Photo">
-        <div class="gi-ov"><span class="gi-ov-t">Architecture</span></div>
+      <div class="gal-item">
+        <img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=500&q=80" alt="Typography">
+        <div class="gal-item-label">Typography</div>
+      </div>
+      <div class="gal-item">
+        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=500&q=80" alt="UI Design">
+        <div class="gal-item-label">UI Design</div>
       </div>
     </div>
   </div>
+
+  <!-- Photography Carousel -->
   <div class="gal-section">
-    <div class="gal-title">Graphic Work</div>
-    <div class="gal-grid gal-grid-graphic">
-      <div class="gi gi-sq"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&q=80" alt="Graphic"><div class="gi-ov"><span class="gi-ov-t">Poster Design</span></div></div>
-      <div class="gi gi-sq"><img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=500&q=80" alt="Graphic"><div class="gi-ov"><span class="gi-ov-t">Brand Identity</span></div></div>
-      <div class="gi gi-sq"><img src="https://images.unsplash.com/photo-1634986666676-ec8fd927c23d?w=500&q=80" alt="Graphic"><div class="gi-ov"><span class="gi-ov-t">Illustration</span></div></div>
-      <div class="gi gi-sq"><img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=500&q=80" alt="Graphic"><div class="gi-ov"><span class="gi-ov-t">Typography</span></div></div>
+    <div class="gal-section-head">
+      <div class="gal-title">Photography</div>
+      <div class="gal-controls">
+        <button class="gal-btn" onclick="galScroll('photography', -1)" aria-label="Previous">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="gal-btn" onclick="galScroll('photography', 1)" aria-label="Next">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="gal-track" id="photography">
+      <div class="gal-item">
+        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=700&q=80" alt="Street Binondo">
+        <div class="gal-item-label">Street, Binondo 2024</div>
+      </div>
+      <div class="gal-item">
+        <img src="https://images.unsplash.com/photo-1490750967868-88df5691cc9b?w=500&q=80" alt="Golden Hour">
+        <div class="gal-item-label">Golden Hour</div>
+      </div>
+      <div class="gal-item">
+        <img src="https://images.unsplash.com/photo-1444464666168-49d633b86797?w=500&q=80" alt="Birds in Flight">
+        <div class="gal-item-label">Birds in Flight</div>
+      </div>
+      <div class="gal-item">
+        <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=500&q=80" alt="City Lights">
+        <div class="gal-item-label">City Lights</div>
+      </div>
+      <div class="gal-item">
+        <img src="https://images.unsplash.com/photo-1473177104440-ffee2f376098?w=500&q=80" alt="Architecture">
+        <div class="gal-item-label">Architecture</div>
+      </div>
     </div>
   </div>
+
 </div>
 
 <div style="background:var(--parchment2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
@@ -637,21 +678,21 @@
       <h2 class="c-title">Let's build<br>something <em>worth<br>remembering.</em></h2>
       <p class="c-sub">Whether you have a brief, a question, or just want to talk design — I'm here. I reply within a day, usually with ideas already forming.</p>
       <div class="c-links">
-        <a href="mailto:alex@example.com" class="c-link">
+        <a href="mailto:jennamaelopezz@gmail.com" class="c-link">
           <svg class="c-link-ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           <div><div>jennamaelopezz@gmail.com</div><div class="c-link-lbl">Email</div></div>
         </a>
         <a href="#" class="c-link">
           <svg class="c-link-ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          <div><div>linkedin.com/in/alexreyes</div><div class="c-link-lbl">LinkedIn</div></div>
+          <div><div>linkedin.com/in/ms-jenna-lopez</div><div class="c-link-lbl">LinkedIn</div></div>
         </a>
         <a href="#" class="c-link">
           <svg class="c-link-ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          <div><div>github.com/alexreyes</div><div class="c-link-lbl">GitHub</div></div>
+          <div><div>github.com/jennq-m</div><div class="c-link-lbl">GitHub</div></div>
         </a>
         <a href="#" class="c-link">
           <svg class="c-link-ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg>
-          <div><div>figma.com/@alexreyes</div><div class="c-link-lbl">Figma Community</div></div>
+          <div><div>figma.com/Jenna Lopez</div><div class="c-link-lbl">Figma Community</div></div>
         </a>
       </div>
     </div>
@@ -659,7 +700,7 @@
       <label class="c-form-label">Full Name</label>
       <input type="text" class="c-form-input" placeholder="Your name">
       <label class="c-form-label">Email Address</label>
-      <input type="email" class="c-form-input" placeholder="you@email.com">
+      <input type="email" class="c-form-input" placeholder="jennamaelopezz@gmail.com">
       <label class="c-form-label">Subject</label>
       <input type="text" class="c-form-input" placeholder="What's on your mind?">
       <label class="c-form-label">Message</label>
@@ -696,5 +737,16 @@
 </footer>
 
 <script src="jennqportfolio.js"></script>
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <div class="lightbox-content">
+    <img id="lightboxImg" src="" alt="" />
+    <video id="lightboxVid" src="" autoplay loop muted playsinline style="display:none"></video>
+    <div class="lightbox-label" id="lightboxLabel"></div>
+  </div>
+</div>
 </body>
 </html>
