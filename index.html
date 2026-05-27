@@ -343,99 +343,162 @@
       <span class="sec-num">03</span>
       <h2 class="sec-title">Projects</h2>
     </div>
-    <div style="margin-bottom:2rem">
-      <div class="proj-tabs">
-        <button class="ptab on" onclick="swTab('school',this)">School</button>
-        <button class="ptab" onclick="swTab('personal',this)">Personal</button>
-      </div>
+
+    <div class="proj-tabs">
+      <button class="ptab on" onclick="swTab('school', this)">School</button>
+      <button class="ptab" onclick="swTab('personal', this)">Personal</button>
     </div>
+
     <div id="school" class="proj-grid">
-      <div class="proj-card">
-        <div class="proj-img">
-          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=700&q=80" alt="Campus app">
-          <span class="proj-cat">Mobile App</span>
-        </div>
-        <div class="proj-body">
-          <div class="proj-title">Campus Companion</div>
-          <div class="proj-desc">Navigation and scheduling app for UST freshmen. End-to-end UX from discovery to prototype. Thesis project, awarded Best in Design.</div>
-          <div class="proj-foot">
-            <div class="proj-stack"><span>Figma</span><span>React Native</span></div>
-            <div class="plink"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-          </div>
-        </div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-img">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80" alt="Dashboard">
-          <span class="proj-cat">Dashboard</span>
-        </div>
-        <div class="proj-body">
-          <div class="proj-title">Enrollment Analytics</div>
-          <div class="proj-desc">Data visualization tool for the registrar's office. Real-time charts, trend reports, and CSV exports. Built as a capstone group project.</div>
-          <div class="proj-foot">
-            <div class="proj-stack"><span>React</span><span>Chart.js</span><span>Node</span></div>
-            <div class="plink"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-          </div>
-        </div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-img">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=80" alt="Case study">
-          <span class="proj-cat">Case Study</span>
-        </div>
-        <div class="proj-body">
-          <div class="proj-title">Redesigning the Queue</div>
-          <div class="proj-desc">Service design case study on canteen congestion. 40 interviews, journey maps, and a proposed digital pre-ordering system.</div>
-          <div class="proj-foot">
-            <div class="proj-stack"><span>UX Research</span><span>Miro</span></div>
-            <div class="plink"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-          </div>
-        </div>
-      </div>
+<div class="proj-card">
+  <div class="proj-img">
+    <img src="assets/profanemoji.png" alt="Thesis NLP" />
+  </div>
+  <span class="proj-cat">Thesis</span>
+  <div class="proj-overlay">
+    <div class="proj-title">Filipino Profanity Offensiveness Predictor</div>
+    <div class="proj-desc">A CNN-BiLSTM model that predicts the offensiveness of emoji-modified Filipino profanity on social media, achieving MAE 1.16 and R² 0.63.</div>
+    <div class="proj-stack">
+      <span>Python</span><span>CNN</span><span>BiLSTM</span><span>NLP</span>
     </div>
+    <div class="proj-btns">
+      <a href="#" target="_blank" class="proj-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        Repository
+      </a>
+      <a href="#" target="_blank" class="proj-btn proj-btn--outline">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Website
+      </a>
+    </div>
+  </div>
+</div>
+      <div class="proj-card">
+        <div class="proj-img">
+          <img src="assets/project2.png" alt="System Design" />
+        </div>
+        <span class="proj-cat">System Design</span>
+        <div class="proj-overlay">
+          <div class="proj-title">Waste Segregation Web-Based Game</div>
+          <div class="proj-desc">Designed and prototyped a web-based game for educating users about proper waste segregation practices in compliance for the final requirement in 
+            Human-Computer Interaction course.</div>
+       
+          <div class="proj-stack">
+            <span>Figma</span><span>Systems Design</span>
+          </div>
+          <div class="proj-btns">
+            <a href="https://github.com/jennq-m/Trash-Dash" target="_blank" class="proj-btn">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              Repository
+            </a>
+            <a href="https://trash-dash.vercel.app/main-menu.html" target="_blank" class="proj-btn proj-btn--outline">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              Website
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-img">
+          <img src="assets/proj3.webp" alt="Fact Detection" />
+        </div>
+        <span class="proj-cat">Machine Learning</span>
+        <div class="proj-overlay">
+          <div class="proj-title">Detecting Facts on the Ground</div>
+          <div class="proj-desc">Collaborated as Junior ML Engineer on a fact-detection project, conducting exploratory data analysis and presenting findings on demo day.</div>
+          <div class="proj-stack">
+            <span>Python</span><span>EDA</span><span>ML</span>
+          </div>
+          <div class="proj-btns">
+            <a href="#" target="_blank" class="proj-btn">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              Repository
+            </a>
+            <a href="https://www.linkedin.com/posts/armielyn-obinguar_as-we-enter-week-6-of-our-second-industry-share-7047077389662629889-1Ri3/" target="_blank" class="proj-btn proj-btn--outline">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              Website
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
     <div id="personal" class="proj-grid hidden">
+
       <div class="proj-card">
         <div class="proj-img">
-          <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=700&q=80" alt="Palette">
-          <span class="proj-cat">SaaS Tool</span>
+          <img src="assets/proj4.webp" alt="Portfolio" />
         </div>
-        <div class="proj-body">
-          <div class="proj-title">Palette Studio</div>
-          <div class="proj-desc">Web tool for generating accessible, harmonious color palettes from a single seed. Built for designers who hate spreadsheet-based color work.</div>
-          <div class="proj-foot">
-            <div class="proj-stack"><span>Next.js</span><span>Tailwind</span></div>
-            <div class="plink"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        <span class="proj-cat">Web Design</span>
+        <div class="proj-overlay">
+          <div class="proj-title">Personal Portfolio</div>
+          <div class="proj-desc">Designed and built this portfolio from scratch — layout, CSS design system, animations, and responsive behavior all handcrafted.</div>
+          <div class="proj-stack">
+            <span>HTML</span><span>CSS</span><span>JS</span>
+          </div>
+          <div class="proj-btns">
+            <a href="https://github.com/jennq-m" target="_blank" class="proj-btn">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              Repository
+            </a>
+            <a href="#" target="_blank" class="proj-btn proj-btn--outline">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              Website
+            </a>
           </div>
         </div>
       </div>
+
       <div class="proj-card">
         <div class="proj-img">
-          <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=700&q=80" alt="Brand">
-          <span class="proj-cat">Brand Identity</span>
+          <img src="assets/proj5.webp" alt="Java App" />
         </div>
-        <div class="proj-body">
-          <div class="proj-title">Higala Coffee</div>
-          <div class="proj-desc">Full visual identity for a Davao specialty coffee startup. Logo system, packaging, and print-ready brand book.</div>
-          <div class="proj-foot">
-            <div class="proj-stack"><span>Illustrator</span><span>Photoshop</span></div>
-            <div class="plink"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        <span class="proj-cat">Development</span>
+        <div class="proj-overlay">
+          <div class="proj-title">Java OOP Application</div>
+          <div class="proj-desc">Developed and fine-tuned Java applications using object-oriented programming as part of NC III certification. Contributed to real solutions during OJT at VULB MEDIA.</div>
+          <div class="proj-stack">
+            <span>Java</span><span>OOP</span>
+          </div>
+          <div class="proj-btns">
+            <a href="#" target="_blank" class="proj-btn">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              Repository
+            </a>
+            <a href="https://drive.google.com/file/d/1hWzGcnnSrScY13llON-Et3ZKuW_mpLtT/view?usp=sharing" target="_blank" class="proj-btn proj-btn--outline">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              Website
+            </a>
           </div>
         </div>
       </div>
+
       <div class="proj-card">
         <div class="proj-img">
-          <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=700&q=80" alt="Photo series">
-          <span class="proj-cat">Documentary</span>
+          <img src="assets/proj6.webp" alt="Data Science" />
         </div>
-        <div class="proj-body">
-          <div class="proj-title">Tao — A Photo Series</div>
-          <div class="proj-desc">Documentary photography capturing everyday Filipinos in Binondo and Divisoria. Exhibited at the DLSU Art Space, April 2024.</div>
-          <div class="proj-foot">
-            <div class="proj-stack"><span>Lightroom</span><span>Canon R7</span></div>
-            <div class="plink"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        <span class="proj-cat">Data Science</span>
+        <div class="proj-overlay">
+          <div class="proj-title">DataCamp Learning Path</div>
+          <div class="proj-desc">Completed a comprehensive data science learning path covering Python, SQL, Machine Learning, Sentiment Analysis, and NLP through the DataCamp scholarship.</div>
+          <div class="proj-stack">
+            <span>Python</span><span>SQL</span><span>NLP</span>
+          </div>
+          <div class="proj-btns">
+            <a href="#" target="_blank" class="proj-btn">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              Repository
+            </a>
+            <a href="https://www.linkedin.com/posts/ms-jenna-lopez_opportunities-datacampdonatesscholar-gdscpupmainandpupstatisticstudentsclique-activity-6998231676262776832-DOH5/" target="_blank" class="proj-btn proj-btn--outline">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              Website
+            </a>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>
