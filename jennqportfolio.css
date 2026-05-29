@@ -987,20 +987,29 @@ body { padding-top: 56px; }
 
   .proj-card {
     aspect-ratio: unset;
-    height: 250px;
-    width: 105%;
-    margin-left: -3%;
-    margin-right: -3%;
+    height: 200px;
+    width: 100%;
+    /* margin-left: -2%;
+    margin-right: -3%; */
   }
+
+  .proj-title { font-size: 14px; }
+  .proj-desc { font-size: 11px; }
+  .proj-stack span { font-size: 9px; padding: 1.5px 6px; }
+  .proj-btn { font-size: 9px; padding: 4px 10px; }
 
   .proj-card--text {
     aspect-ratio: unset;
-    height: auto;
-    min-height: 260px;
-    width: 110%;
-    margin-left: -5%;
-    margin-right: -5%;
+    height: 30px;
+    width: 100%;
+    /* margin-left: -5%;
+    margin-right: -5%; */
+    font-size: 10px;
   }
+  .proj-card--text .proj-title { font-size: 12px; }
+  .proj-card--text .proj-desc { font-size: 10px; }
+  .proj-card--text .proj-stack span { font-size: 8px; }
+  .proj-card--text .proj-btns { flex-wrap: wrap; }
 }
 
 /* ====== GALLERY CAROUSEL ====== */
