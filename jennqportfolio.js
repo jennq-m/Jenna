@@ -176,5 +176,51 @@ lightbox.addEventListener('click', e => {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeLightbox();
 });
+  // ── Gallery carousel ──
+  window.galScroll = function(id, dir) {
+    const track = document.getElementById(id);
+    if (!track) return;
+    const itemWidth = (track.querySelector('.gal-item')?.offsetWidth || 290) + 12;
+    track.scrollBy({ left: dir * itemWidth, behavior: 'smooth' });
+  };
+
+  // ── Smooth drag-to-scroll on all tracks ──
+  document.querySelectorAll('.gal-track').forEach(track => {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    track.addEventListener('mousedown', e => {
+      isDown = true;
+      track.style.cursor = 'grabbing';
+      startX = e.pageX - track.offsetLeft;
+      scrollLeft = track.scrollLeft;
+    });
+
+    track.addEventListener('mouseleave', () => {
+      isDown = false;
+      track.style.cursor = 'grab';
+    });
+
+    track.addEventListener('mouseup', () => {
+      isDown = false;
+      track.style.cursor = 'grab';
+    });
+
+    track.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - track.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      track.scrollLeft = scrollLeft - walk;
+    });
+  });
+
+window.galScroll = function(id, dir) {
+  const track = document.getElementById(id);
+  if (!track) return;
+  const itemWidth = (track.querySelector('.gal-item-wrap')?.offsetWidth || 290) + 12;
+  track.scrollBy({ left: dir * itemWidth, behavior: 'smooth' });
+};
 
 });

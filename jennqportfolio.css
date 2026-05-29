@@ -1007,6 +1007,7 @@ body { padding-top: 56px; }
 
 .gal-section {
   margin-bottom: 3rem;
+  overflow: visible; /* ← critical */
 }
 
 .gal-section:last-child { margin-bottom: 0; }
@@ -1068,35 +1069,50 @@ body { padding-top: 56px; }
 /* Scrollable track */
 .gal-track {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   overflow-x: auto;
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding-bottom: 4px;
+  padding: 12px 8px 16px 8px; /* top/bottom padding gives glow room */
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  /* Remove overflow clipping on filter */
+  -webkit-overflow-scrolling: touch;
 }
 
+.gal-track:active { cursor: grabbing; }
 .gal-track::-webkit-scrollbar { display: none; }
 
+/* Wrapper — isolates glow per card */
+.gal-item-wrap {
+  flex-shrink: 0;
+  border-radius: 12px;
+  scroll-snap-align: start;
+  filter: drop-shadow(0 0 10px rgba(107, 95, 160, 0.45));
+  transition: filter 300ms ease, transform 300ms ease;
+  isolation: isolate; /* ← forces each wrapper to render independently */
+}
+
+.gal-item-wrap:hover {
+  filter: drop-shadow(0 0 22px rgba(107, 95, 160, 0.75));
+  transform: translateY(-4px);
+}
 /* Each item */
 .gal-item {
   position: relative;
-  flex-shrink: 0;
-  width: 280px;
-  aspect-ratio: 4/3;
+  width: 290px;
+  aspect-ratio: 7/6;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--border);
-  cursor: pointer;
-  transition: transform 300ms ease, box-shadow 300ms ease;
+  cursor: zoom-in;
+  display: block;
 }
 
-.gal-item:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--sh2);
-}
-
-.gal-item img {
+.gal-item img,
+.gal-item video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1104,7 +1120,10 @@ body { padding-top: 56px; }
   transition: transform 400ms ease;
 }
 
-.gal-item:hover img { transform: scale(1.04); }
+.gal-item-wrap:hover .gal-item img,
+.gal-item-wrap:hover .gal-item video {
+  transform: scale(1.04);
+}
 
 /* Label overlay */
 .gal-item-label {
@@ -1122,14 +1141,17 @@ body { padding-top: 56px; }
   transition: opacity 300ms ease, transform 300ms ease;
 }
 
-.gal-item:hover .gal-item-label {
+.gal-item-wrap:hover .gal-item-label {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-  .gal-item { width: 220px; }
+  .gal-item {
+    width: 220px;
+    aspect-ratio: 4/5;
+  }
   .gal-section-head { flex-wrap: wrap; gap: 0.75rem; }
 }
 
@@ -1209,10 +1231,6 @@ body { padding-top: 56px; }
   background: rgba(255,255,255,0.2);
   transform: rotate(90deg);
 }
-
-/* Cursor hint on gallery items */
-.gal-item { cursor: zoom-in; }
-
 /* ====== CONTACT ====== */
 .contact-bg {
   background: var(--plum3);
@@ -1484,7 +1502,7 @@ footer {
 
   /* Gallery */
   .gal-grid-photo { grid-template-columns: 1fr 1fr; }
-  .gi-lg { grid-row: span 1; aspect-ratio: 4/3; }
+  .gi-lg { grid-row: span 1; aspect-ratio: 7/6; }
   .gal-grid-graphic { grid-template-columns: 1fr 1fr; }
 
   /* Hobbies */
