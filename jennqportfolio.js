@@ -168,6 +168,43 @@ document.querySelectorAll('.gal-item').forEach(item => {
   });
 });
 
+// ── Disable gallery buttons at boundaries ──
+function updateGalButtons(trackId) {
+  const track = document.getElementById(trackId);
+  if (!track) return;
+
+  const prevBtn = track.closest('.gal-section').querySelector('.gal-btn:first-child');
+  const nextBtn = track.closest('.gal-section').querySelector('.gal-btn:last-child');
+
+  const atStart = track.scrollLeft <= 4;
+  const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+
+  prevBtn.disabled = atStart;
+  nextBtn.disabled = atEnd;
+
+  prevBtn.style.opacity = atStart ? '0.35' : '1';
+  prevBtn.style.cursor = atStart ? 'not-allowed' : 'pointer';
+  nextBtn.style.opacity = atEnd ? '0.35' : '1';
+  nextBtn.style.cursor = atEnd ? 'not-allowed' : 'pointer';
+}
+
+// Run on scroll
+['graphic', 'photography'].forEach(id => {
+  const track = document.getElementById(id);
+  if (!track) return;
+  track.addEventListener('scroll', () => updateGalButtons(id));
+  // Set initial state
+  updateGalButtons(id);
+});
+
+// Update galScroll to respect disabled state
+window.galScroll = function(id, dir) {
+  const track = document.getElementById(id);
+  if (!track) return;
+  const itemWidth = (track.querySelector('.gal-item-wrap')?.offsetWidth || 290) + 12;
+  track.scrollBy({ left: dir * itemWidth, behavior: 'smooth' });
+};
+
 // Close on button, backdrop click, or Escape key
 lightboxClose.addEventListener('click', closeLightbox);
 lightbox.addEventListener('click', e => {
