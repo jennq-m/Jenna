@@ -98,24 +98,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   expCards.forEach(c => expObserver.observe(c));
 
-  // ── Project card tap to reveal on mobile ──
+// ── Project card tap to reveal on mobile ──
 if (window.matchMedia('(hover: none)').matches) {
   document.querySelectorAll('.proj-card').forEach(card => {
     card.addEventListener('click', e => {
-      // If clicking a button/link inside the overlay, let it through
+      // Let button/link clicks pass through
       if (e.target.closest('.proj-btn') || e.target.closest('.plink')) return;
 
+      // Toggle this card — clicking again closes it
       const isActive = card.classList.contains('tapped');
 
-      // Close all other cards first
+      // Close all cards first
       document.querySelectorAll('.proj-card.tapped').forEach(c => c.classList.remove('tapped'));
 
-      // Toggle this one
+      // If it wasn't active, open it; if it was, leave it closed
       if (!isActive) card.classList.add('tapped');
     });
   });
 
-  // Tap outside to close
+  // Tap outside to close all
   document.addEventListener('click', e => {
     if (!e.target.closest('.proj-card')) {
       document.querySelectorAll('.proj-card.tapped').forEach(c => c.classList.remove('tapped'));
