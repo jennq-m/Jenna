@@ -1334,18 +1334,76 @@
   </button>
 </div>
 
-<script>
-  function sendEmail() {
-    const params = {
-      from_name:  document.getElementById("from_name").value,
-      from_email: document.getElementById("from_email").value,
-      subject:    document.getElementById("subject").value,
-      message:    document.getElementById("message").value,
-    };
+<!-- Modal -->
+<div id="emailModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:9999; align-items:center; justify-content:center; padding:1rem;">
+  <div style="background:var(--surface, #fff); border:1px solid var(--border); border-radius:20px; padding:2.5rem 2rem; width:100%; max-width:360px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:12px;">
+    <div id="modalIcon" style="width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:28px; margin-bottom:4px;"></div>
+    <p id="modalTitle" style="font-size:18px; font-weight:600; color:var(--ink); margin:0;"></p>
+    <div style="width:40px; height:1px; background:var(--border);"></div>
+    <p id="modalSub" style="font-size:14px; color:var(--ink2); margin:0; line-height:1.6;"></p>
+    <button id="modalClose" onclick="closeModal()" style="margin-top:8px; padding:10px 24px; border-radius:10px; border:1px solid var(--border); background:var(--parchment2); color:var(--ink); font-size:13px; font-weight:500; cursor:pointer; width:100%;"></button>
+  </div>
+</div>
 
-    emailjs.send("service_g7jokpi", "template_zjefwph", params)
-      .then(() => alert("Message sent!"))
-      .catch(() => alert("Something went wrong. Please try again."));
+<script>
+  function showModal(type) {
+    const modal = document.getElementById('emailModal');
+    const icon = document.getElementById('modalIcon');
+    const title = document.getElementById('modalTitle');
+    const sub = document.getElementById('modalSub');
+    const btn = document.getElementById('modalClose');
+
+    if (type === 'success') {
+      icon.style.background = '#EAF3DE';
+      icon.style.color = '#3B6D11';
+      icon.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h9"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/><path d="m16 19 2 2 4-4"/></svg>`;
+      title.textContent = 'Message sent!';
+      sub.innerHTML = "Thanks for reaching out. I'll get back to you within a day — usually with ideas already forming.";
+      btn.textContent = 'Close';
+    } else {
+      icon.style.background = '#FCEBEB';
+      icon.style.color = '#A32D2D';
+      icon.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/><path d="m17 17 4 4m0-4-4 4"/></svg>`;
+      title.textContent = 'Something went wrong';
+      sub.innerHTML = "Your message couldn't be sent. Please try again or reach me directly at <strong>jennamaelopezz@gmail.com</strong>";
+      btn.textContent = 'Try again';
+    }
+
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('emailModal').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('emailModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  function sendEmail() {
+    const name  = document.getElementById("from_name").value.trim();
+    const email = document.getElementById("from_email").value.trim();
+    const subj  = document.getElementById("subject").value.trim();
+    const msg   = document.getElementById("message").value.trim();
+
+    if (!name || !email || !subj || !msg) {
+      alert("Please fill in all fields before sending.");
+      return;
+    }
+
+    emailjs.send("service_g7jokpi", "template_zjefwph", {
+      from_name: name, from_email: email, subject: subj, message: msg
+    })
+    .then(() => {
+      showModal('success');
+      document.getElementById("from_name").value = '';
+      document.getElementById("from_email").value = '';
+      document.getElementById("subject").value = '';
+      document.getElementById("message").value = '';
+    })
+    .catch(() => showModal('error'));
   }
 </script>
   </div>
