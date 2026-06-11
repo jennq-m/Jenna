@@ -260,4 +260,19 @@ window.galScroll = function(id, dir) {
   track.scrollBy({ left: dir * itemWidth, behavior: 'smooth' });
 };
 
+  // ── Back to top button behavior ──
+  const backToTopBtn = document.getElementById('backToTopBtn');
+  if (backToTopBtn) {
+    const updateBackToTop = () => {
+      backToTopBtn.classList.toggle('visible', window.scrollY > 320);
+    };
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    window.addEventListener('scroll', updateBackToTop, { passive: true });
+    updateBackToTop();
+  }
+
 });
