@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-// ── Experience card entrance animation ──
+  // ── Experience card entrance animation ──
   const expCards = document.querySelectorAll('.exp-card');
   const expObserver = new IntersectionObserver((observations) => {
     observations.forEach(obs => {
@@ -98,126 +98,105 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   expCards.forEach(c => expObserver.observe(c));
 
-// ── Project card tap to reveal on mobile ──
-if (window.matchMedia('(hover: none)').matches) {
-  document.querySelectorAll('.proj-card').forEach(card => {
-    card.addEventListener('click', e => {
-      // Let button/link clicks pass through
-      if (e.target.closest('.proj-btn') || e.target.closest('.plink')) return;
+  // ── Project card tap to reveal on mobile ──
+  if (window.matchMedia('(hover: none)').matches) {
+    document.querySelectorAll('.proj-card').forEach(card => {
+      card.addEventListener('click', e => {
+        if (e.target.closest('.proj-btn') || e.target.closest('.plink')) return;
+        const isActive = card.classList.contains('tapped');
+        document.querySelectorAll('.proj-card.tapped').forEach(c => c.classList.remove('tapped'));
+        if (!isActive) card.classList.add('tapped');
+      });
+    });
 
-      // Toggle this card — clicking again closes it
-      const isActive = card.classList.contains('tapped');
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.proj-card')) {
+        document.querySelectorAll('.proj-card.tapped').forEach(c => c.classList.remove('tapped'));
+      }
+    });
+  }
 
-      // Close all cards first
-      document.querySelectorAll('.proj-card.tapped').forEach(c => c.classList.remove('tapped'));
+  // ── Lightbox ──
+  const lightbox      = document.getElementById('lightbox');
+  const lightboxImg   = document.getElementById('lightboxImg');
+  const lightboxVid   = document.getElementById('lightboxVid');
+  const lightboxLbl   = document.getElementById('lightboxLabel');
+  const lightboxClose = document.getElementById('lightboxClose');
 
-      // If it wasn't active, open it; if it was, leave it closed
-      if (!isActive) card.classList.add('tapped');
+  function openLightbox(src, label, isVideo) {
+    if (isVideo) {
+      lightboxVid.src = src;
+      lightboxVid.style.display = 'block';
+      lightboxImg.style.display = 'none';
+    } else {
+      lightboxImg.src = src;
+      lightboxImg.style.display = 'block';
+      lightboxVid.style.display = 'none';
+      lightboxVid.src = '';
+    }
+    lightboxLbl.textContent = label || '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lightboxVid.src = '';
+  }
+
+  document.querySelectorAll('.gal-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const video = item.querySelector('video');
+      const img   = item.querySelector('img');
+      const label = item.querySelector('.gal-item-label')?.textContent || '';
+      if (video) {
+        openLightbox(video.src, label, true);
+      } else if (img) {
+        openLightbox(img.src, label, false);
+      }
     });
   });
 
-  // Tap outside to close all
-  document.addEventListener('click', e => {
-    if (!e.target.closest('.proj-card')) {
-      document.querySelectorAll('.proj-card.tapped').forEach(c => c.classList.remove('tapped'));
-    }
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) closeLightbox();
   });
-}
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
 
-// ── Lightbox ──
-const lightbox     = document.getElementById('lightbox');
-const lightboxImg  = document.getElementById('lightboxImg');
-const lightboxVid  = document.getElementById('lightboxVid');
-const lightboxLbl  = document.getElementById('lightboxLabel');
-const lightboxClose = document.getElementById('lightboxClose');
+  // ── Disable gallery buttons at boundaries ──
+  function updateGalButtons(trackId) {
+    const track = document.getElementById(trackId);
+    if (!track) return;
 
-function openLightbox(src, label, isVideo) {
-  if (isVideo) {
-    lightboxVid.src = src;
-    lightboxVid.style.display = 'block';
-    lightboxImg.style.display = 'none';
-  } else {
-    lightboxImg.src = src;
-    lightboxImg.style.display = 'block';
-    lightboxVid.style.display = 'none';
-    lightboxVid.src = '';
+    const prevBtn = track.closest('.gal-section').querySelector('.gal-btn:first-child');
+    const nextBtn = track.closest('.gal-section').querySelector('.gal-btn:last-child');
+
+    const atStart = track.scrollLeft <= 4;
+    const atEnd   = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+
+    prevBtn.disabled      = atStart;
+    prevBtn.style.opacity = atStart ? '0.35' : '1';
+    prevBtn.style.cursor  = atStart ? 'not-allowed' : 'pointer';
+    nextBtn.disabled      = atEnd;
+    nextBtn.style.opacity = atEnd ? '0.35' : '1';
+    nextBtn.style.cursor  = atEnd ? 'not-allowed' : 'pointer';
   }
-  lightboxLbl.textContent = label || '';
-  lightbox.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
 
-function closeLightbox() {
-  lightbox.classList.remove('open');
-  document.body.style.overflow = '';
-  lightboxVid.src = '';
-}
-
-// Attach click to all gallery items
-document.querySelectorAll('.gal-item').forEach(item => {
-  item.addEventListener('click', () => {
-    const video = item.querySelector('video');
-    const img   = item.querySelector('img');
-    const label = item.querySelector('.gal-item-label')?.textContent || '';
-
-    if (video) {
-      openLightbox(video.src, label, true);
-    } else if (img) {
-      openLightbox(img.src, label, false);
-    }
+  ['graphic', 'photography', 'certificates'].forEach(id => {
+    const track = document.getElementById(id);
+    if (!track) return;
+    track.addEventListener('scroll', () => updateGalButtons(id));
+    updateGalButtons(id);
   });
-});
 
-// ── Disable gallery buttons at boundaries ──
-function updateGalButtons(trackId) {
-  const track = document.getElementById(trackId);
-  if (!track) return;
-
-  const prevBtn = track.closest('.gal-section').querySelector('.gal-btn:first-child');
-  const nextBtn = track.closest('.gal-section').querySelector('.gal-btn:last-child');
-
-  const atStart = track.scrollLeft <= 4;
-  const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
-
-  prevBtn.disabled = atStart;
-  nextBtn.disabled = atEnd;
-
-  prevBtn.style.opacity = atStart ? '0.35' : '1';
-  prevBtn.style.cursor = atStart ? 'not-allowed' : 'pointer';
-  nextBtn.style.opacity = atEnd ? '0.35' : '1';
-  nextBtn.style.cursor = atEnd ? 'not-allowed' : 'pointer';
-}
-
-// Run on scroll
-['graphic', 'photography'].forEach(id => {
-  const track = document.getElementById(id);
-  if (!track) return;
-  track.addEventListener('scroll', () => updateGalButtons(id));
-  // Set initial state
-  updateGalButtons(id);
-});
-
-// Update galScroll to respect disabled state
-window.galScroll = function(id, dir) {
-  const track = document.getElementById(id);
-  if (!track) return;
-  const itemWidth = (track.querySelector('.gal-item-wrap')?.offsetWidth || 290) + 12;
-  track.scrollBy({ left: dir * itemWidth, behavior: 'smooth' });
-};
-
-// Close on button, backdrop click, or Escape key
-lightboxClose.addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', e => {
-  if (e.target === lightbox) closeLightbox();
-});
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeLightbox();
-});
-  // ── Gallery carousel ──
+  // ── Gallery carousel scroll ──
   window.galScroll = function(id, dir) {
     const track = document.getElementById(id);
     if (!track) return;
-    const itemWidth = (track.querySelector('.gal-item')?.offsetWidth || 290) + 12;
+    const itemWidth = (track.querySelector('.gal-item-wrap')?.offsetWidth || 290) + 12;
     track.scrollBy({ left: dir * itemWidth, behavior: 'smooth' });
   };
 
@@ -233,44 +212,52 @@ document.addEventListener('keydown', e => {
       startX = e.pageX - track.offsetLeft;
       scrollLeft = track.scrollLeft;
     });
-
     track.addEventListener('mouseleave', () => {
       isDown = false;
       track.style.cursor = 'grab';
     });
-
     track.addEventListener('mouseup', () => {
       isDown = false;
       track.style.cursor = 'grab';
     });
-
     track.addEventListener('mousemove', e => {
       if (!isDown) return;
       e.preventDefault();
-      const x = e.pageX - track.offsetLeft;
+      const x    = e.pageX - track.offsetLeft;
       const walk = (x - startX) * 1.5;
       track.scrollLeft = scrollLeft - walk;
     });
   });
 
-window.galScroll = function(id, dir) {
-  const track = document.getElementById(id);
-  if (!track) return;
-  const itemWidth = (track.querySelector('.gal-item-wrap')?.offsetWidth || 290) + 12;
-  track.scrollBy({ left: dir * itemWidth, behavior: 'smooth' });
-};
+  // ── Graphic Works folder filter ──
+  window.filterGallery = function(trackId, folder, btn) {
+    const track = document.getElementById(trackId);
+    if (!track) return;
 
-  // ── Back to top button behavior ──
+    // Update active pill
+    btn.closest('.gal-folder-bar').querySelectorAll('.gal-folder-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Show/hide items
+    track.querySelectorAll('.gal-item-wrap').forEach(wrap => {
+      const match = folder === 'all' || wrap.dataset.folder === folder;
+      wrap.style.display = match ? '' : 'none';
+    });
+
+    // Scroll back to start & refresh boundary buttons
+    track.scrollLeft = 0;
+    updateGalButtons(trackId);
+  };
+
+  // ── Back to top ──
   const backToTopBtn = document.getElementById('backToTopBtn');
   if (backToTopBtn) {
     const updateBackToTop = () => {
       backToTopBtn.classList.toggle('visible', window.scrollY > 320);
     };
-
     backToTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
     window.addEventListener('scroll', updateBackToTop, { passive: true });
     updateBackToTop();
   }
