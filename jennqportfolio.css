@@ -1461,7 +1461,7 @@ body { padding-top: 56px; }
 
 /* ====== CONTACT ====== */
 .contact-bg {
-  background: var(--plum3);
+  background: #9B8EC7;
 }
 
 .contact-inner {
@@ -1478,15 +1478,15 @@ body { padding-top: 56px; }
   font-family: 'Cormorant Garamond', serif;
   font-size: 44px;
   font-weight: 300;
-  color: #fff;
+  color: var(--ink);
   line-height: 1.1;
   letter-spacing: -0.01em;
   margin-bottom: 1.5rem;
 }
 
-.c-title em { font-style: italic; color: var(--lav3); }
+.c-title em { font-style: italic; color: var(--plum2); }
 
-.c-sub { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 2rem; }
+.c-sub { font-size: 14px; color: var(--ink2); line-height: 1.75; margin-bottom: 2rem; }
 
 .c-links { display: flex; flex-direction: column; gap: 8px; }
 
@@ -1499,21 +1499,21 @@ body { padding-top: 56px; }
   border: 1px solid rgba(255,255,255,0.14);
   background: rgba(255,255,255,0.06);
   text-decoration: none;
-  color: rgba(255,255,255,0.85);
+  color: var(--ink2);
   font-size: 14px;
   transition: all var(--tr);
 }
 
 .c-link:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.22); transform: translateY(-1px); }
-.c-link-ico { color: var(--lav3); flex-shrink: 0; }
-.c-link-lbl { font-size: 11px; color: rgba(255,255,255,0.4); }
+.c-link-ico { color: var(--ink2); flex-shrink: 0; }
+.c-link-lbl { font-size: 11px; color: var(--ink2); }
 
 .c-form-label {
   font-size: 11px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.45);
+  color: var(--ink2);
   display: block;
   margin-bottom: 7px;
   margin-top: 1rem;
@@ -1526,7 +1526,7 @@ body { padding-top: 56px; }
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
   background: rgba(255,255,255,0.07);
-  color: #fff;
+  color: var(--ink2);
   border: 1.5px solid rgba(255,255,255,0.14);
   border-radius: 7px;
   padding: 11px 14px;
@@ -1535,7 +1535,7 @@ body { padding-top: 56px; }
   margin-bottom: 0;
 }
 
-.c-form-input::placeholder, .c-form-ta::placeholder { color: rgba(255,255,255,0.3); }
+.c-form-input::placeholder, .c-form-ta::placeholder { color: var(--ink2); }
 .c-form-input:focus, .c-form-ta:focus { border-color: var(--lav3); box-shadow: 0 0 0 3px rgba(191,180,232,0.15); }
 .c-form-ta { min-height: 110px; resize: none; }
 
@@ -1562,7 +1562,7 @@ body { padding-top: 56px; }
 
 /* ====== FOOTER ====== */
 footer {
-  background: var(--plum3);
+  background: #9B8EC7;
   border-top: 1px solid rgba(255,255,255,0.1);
   padding: 2rem 1.5rem;
 }
@@ -1587,7 +1587,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.5);
+  color: var(--ink2);
   border: 1px solid rgba(255,255,255,0.1);
   background: rgba(255,255,255,0.05);
   transition: color 300ms ease,
@@ -1597,7 +1597,7 @@ footer {
 }
 
 .footer-links a:hover {
-  color: #fff;
+  color: var(--plum2);
   background: rgba(255,255,255,0.12);
   border-color: rgba(255,255,255,0.25);
   transform: translateY(-3px);
@@ -1605,7 +1605,7 @@ footer {
 
 .footer-copy {
   font-size: 11px;
-  color: rgba(255,255,255,0.25);
+  color: var(--ink2);
 }
 /* ====== TABLET (max 1024px) ====== */
 @media (max-width: 1024px) {
