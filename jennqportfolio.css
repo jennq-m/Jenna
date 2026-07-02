@@ -1831,3 +1831,150 @@ footer {
   .sec-title { font-size: 26px; }
   .c-title { font-size: 28px; }
 }
+
+/* ====== PRINT STYLES ====== */
+@media print {
+  /* Hide interactive/non-content UI */
+  nav, .nav-toggle, .back-to-top,
+  .gal-controls, .gal-folder-bar,
+  .lightbox, #emailModal,
+  .c-form-label, .c-form-input, .c-form-ta, .c-btn,
+  .proj-tabs {
+    display: none !important;
+  }
+
+  body {
+    padding-top: 0 !important;
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 12px;
+  }
+
+  /* Force all sections/content to be visible regardless of JS state */
+  .hidden,
+  #personal.hidden,
+  .gal-item-wrap,
+  .edu-entry,
+  .exp-card,
+  .proj-card,
+  .proj-overlay {
+    display: block !important;
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+    filter: none !important;
+    position: static !important;
+  }
+
+  /* Show BOTH project tabs stacked, with labels */
+  #school, #personal {
+    display: block !important;
+  }
+  #personal::before {
+    content: "Personal Projects";
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 2rem 0 1rem;
+    page-break-before: always;
+  }
+
+  /* Project grid -> simple stacked/wrapping layout */
+  .proj-grid {
+    display: block !important;
+  }
+  .proj-card {
+    aspect-ratio: unset !important;
+    height: auto !important;
+    width: 100% !important;
+    margin-bottom: 1.5rem;
+    page-break-inside: avoid;
+    border: 1px solid #ccc !important;
+  }
+  .proj-img {
+    position: static !important;
+    width: 100% !important;
+    height: 220px !important;
+  }
+  .proj-overlay {
+    position: static !important;
+    background: #fff !important;
+    padding: 1rem !important;
+  }
+  .proj-title, .proj-desc, .proj-stack span {
+    color: #1C1625 !important;
+  }
+  .proj-stack span {
+    background: #EFECF4 !important;
+    border: 1px solid #ccc !important;
+  }
+  .proj-btn, .proj-btn--outline {
+    color: #4E4580 !important;
+    border: 1px solid #ccc !important;
+    background: #fff !important;
+  }
+
+  /* Galleries: turn horizontal carousels into wrapping grids */
+  .gal-track {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    overflow: visible !important;
+    gap: 12px;
+    padding: 0 !important;
+  }
+  .gal-item-wrap {
+    filter: none !important;
+    width: 200px;
+    page-break-inside: avoid;
+  }
+  .gal-item {
+    width: 200px !important;
+    height: 180px !important;
+    aspect-ratio: unset !important;
+  }
+  .gal-item-label {
+    position: static !important;
+    opacity: 1 !important;
+    transform: none !important;
+    background: none !important;
+    color: #4A4060 !important;
+    padding: 0.4rem 0 !important;
+    font-size: 10px;
+  }
+
+  /* Experience cards: full width, no spotlight effects */
+  .exp-card-grid {
+    display: block !important;
+  }
+  .exp-card {
+    width: 100% !important;
+    margin-bottom: 1rem;
+    page-break-inside: avoid;
+    border: 1px solid #ccc !important;
+  }
+  .exp-card::before { display: none !important; }
+  .exp-card-img { border: 1px solid #ccc !important; }
+
+  /* Hobbies grid -> simple flow */
+  .hob-logo, .hob-tag, .hob-link {
+    border: 1px solid #ccc !important;
+    background: #fff !important;
+  }
+
+  /* Avoid breaking inside key blocks */
+  .edu-entry, .gal-section, .hob-category {
+    page-break-inside: avoid;
+  }
+
+  /* Section spacing tighter for print */
+  .sec-wrap, .proj-inner, .contact-inner {
+    padding: 1.5rem 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Contact: drop the form entirely, keep links */
+  .contact-inner {
+    display: block !important;
+  }
+}
